@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Minecraft-Man</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="map">
+        
+    </div>
+    <div id="score"></div>
+</body>
+<script>
+    var map = [
+        [0,0,0,0,0,0,0,0,0,0,0],
+        [0,1,1,1,1,8,1,1,0,1,0],
+        [0,0,9,0,1,0,1,0,0,1,0],
+        [0,1,0,0,1,0,1,1,1,1,0],
+        [0,1,1,1,1,0,1,0,0,1,0],
+        [0,0,0,0,1,1,1,1,1,1,0],
+        [0,0,0,0,0,0,0,0,0,0,0],
+    ];
+
+    var steve = {
+        row: 2,
+        col: 2,
+        gold: 0
+    }
+
+    function drawMap(){
+        var output = "";
+        for (var row = 0; row < map.length; row++){
+            console.log(map[row]);
+            output += "<div class='row'>";
+            for (var col = 0; col < map[row].length; col++){
+                console.log(map[row][col]);
+                if (map[row][col] == 0){
+                    output += "<div class='wall'></div>";
+                }else if (map[row][col] == 9){
+                    output += "<div class='steve'></div>";
+                }else if (map[row][col] == 1){
+                    output += "<div class='ore'></div>";
+                }else if (map[row][col] == 8){
+                    output += "<div class='creeper'></div>";
+                }else if (map[row][col] == 2){
+                    output += "<div class='path'></div>";
+                }
+            }
+            output += "</div>";
+        }
+        document.getElementById('map').innerHTML = output;
+    }
+
+    drawMap();
+
+    document.onkeydown = function(event){
+        console.log(event);
+        if (event.key == "ArrowUp"){
+            if (map[steve.row-1][steve.col] != undefined && map[steve.row-1][steve.col] != 0){
+                map[steve.row][steve.col] = 1;
+                steve.row--;
+                map[steve.row][steve.col] = 9;
+            }
+        }
+        else if (event.key == "ArrowDown"){
+            if (map[steve.row+1][steve.col] != undefined && map[steve.row+1][steve.col] != 0){
+                map[steve.row][steve.col] = 1;
+                steve.row++;
+                map[steve.row][steve.col] = 9;
+            }
+        }
+        else if (event.key == "ArrowLeft"){
+            if (map[steve.row][steve.col-1] != undefined && map[steve.row][steve.col-1] != 0){
+                map[steve.row][steve.col] = 1;
+                steve.col--;
+                map[steve.row][steve.col] = 9;
+            }
+        }
+        else if (event.key == "ArrowRight"){
+            if (map[steve.row][steve.col+1] != undefined && map[steve.row][steve.col+1] != 0){
+                map[steve.row][steve.col] = 1;
+                steve.col++;
+                map[steve.row][steve.col] = 9;
+            }
+        }
+        drawMap();
+    }
+</script>
+</html>

@@ -1,0 +1,39 @@
+.wall {
+    background-image: url('images/wall.jpg');
+    background-size: contain;
+    height: 75px;
+    width: 100px;
+    display:inline-block;
+    vertical-align: top;
+}
+.steve {
+    background-image: url('images/steve.png');
+    background-size: cover;
+    height: 75px;
+    width: 100px;
+    display:inline-block;
+    vertical-align: top;
+}
+.ore {
+    background-image: url('images/ore.jpg');
+    background-size: cover;
+    height: 75px;
+    width: 100px;
+    display:inline-block;
+    vertical-align: top;
+}
+.path {
+    height: 75px;
+    width: 100px;
+    display:inline-block;
+    vertical-align: top;
+    background-color: gray;
+}
+.creeper {
+    background-image: url('images/creeper.png');
+    background-size: cover;
+    height: 75px;
+    width: 100px;
+    display:inline-block;
+    vertical-align: top;
+}
